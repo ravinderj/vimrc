@@ -1,3 +1,5 @@
+set runtimepath+=~/.my_vim_runtime
+
 set nu
 set ruler
 set hlsearch
@@ -18,3 +20,14 @@ set statusline+=%F
 set nowrap
 set clipboard=unnamed
 set updatetime=100
+set belloff=all
+
+" Maintain undo history between sessions
+set undodir=~/.my_vim_runtime/temp_dirs/undodir
+set undofile
+
+" Avoid creating swap files
+" set noswapfile
+
+" Set directory for swapfiles
+set directory^=~/.my_vim_runtime/temp_dirs/swapdir//
