@@ -19,6 +19,8 @@ augroup vimComment
   autocmd fileType * vnoremap <silent> gcc :call Comment("//", 2)<CR>
   autocmd fileType vim nnoremap <silent> gcc :call Comment("\"", 1)<CR>
   autocmd fileType vim vnoremap <silent> gcc :call Comment("\"", 1)<CR>
+  autocmd fileType zsh nnoremap <silent> gcc :call Comment("#", 1)<CR>
+  autocmd fileType zsh vnoremap <silent> gcc :call Comment("#", 1)<CR>
   autocmd fileType sh nnoremap <silent> gcc :call Comment("#", 1)<CR>
   autocmd fileType sh vnoremap <silent> gcc :call Comment("#", 1)<CR>
 augroup END
