@@ -5,6 +5,6 @@ let g:netrw_winsize = 20
 
 augroup ProjectDrawer
   autocmd!
-  autocmd VimEnter * :Vexplore
+  autocmd VimEnter * if argc() == 0 | :Vexplore | else | endif
 augroup END
 autocmd FileType netrw setl bufhidden=delete
