@@ -16,11 +16,20 @@ set nofoldenable     " Don't fold by default when opening a file
 set foldlevel=2      " Set at least 2 levels of fold open
 set backspace=indent,eol,start
 set laststatus=2
-set statusline+=%F
 set nowrap
 set clipboard=unnamed
 set updatetime=100
 set belloff=all
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%#HLname#
+set statusline+=\ %f
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+hi StatusLine ctermbg=white ctermfg=60
 
 " Maintain undo history between sessions
 set undodir=~/.my_vim_runtime/temp_dirs/undodir
