@@ -5,10 +5,12 @@ endfunction
 " Comment/Uncomment
 function Comment(commentor, index)
   if ! IsCommented(a:commentor, a:index)
-    execute "normal! mz0i". a:commentor
+    execute "normal! mz"
+    execute "silent :s/^/".a:commentor." /"
     normal! `z
   else
-    execute "normal! mz0". a:index. "ld^"
+    execute "normal! mz"
+    execute "silent :s/^".a:commentor." \\?//"
     normal! `z
   endif
 endfunction
