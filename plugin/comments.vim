@@ -6,11 +6,11 @@ endfunction
 function Comment(commentor, index)
   if ! IsCommented(a:commentor, a:index)
     execute "normal! mz"
-    execute "silent :s/^/".a:commentor." /"
+    execute "silent :s@^@".a:commentor." @"
     normal! `z
   else
     execute "normal! mz"
-    execute "silent :s/^".a:commentor." \\?//"
+    execute "silent :s@^".a:commentor." \\?@@"
     normal! `z
   endif
 endfunction
