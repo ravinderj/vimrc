@@ -1,6 +1,7 @@
 set runtimepath+=~/.my_vim_runtime
 
-set nu
+set number
+set wildmenu
 set ruler
 set hlsearch
 set incsearch
