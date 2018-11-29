@@ -1,28 +1,26 @@
-function IsCommented(commentor, index)
-  return strcharpart(getline('.'), 0, a:index) == a:commentor
+function IsCommented(commentInitial, commentEnd)
+  let commentInitialPresent = match(getline('.'),'^\M'.a:commentInitial) != -1
+  let commentEndPresent = match(getline('.'),'\M'.a:commentEnd.'$') != -1
+  return commentInitialPresent && commentEndPresent
 endfunction
 
 " Comment/Uncomment
-function Comment(commentor, index)
-  if ! IsCommented(a:commentor, a:index)
+function Comment()
+  let commentInitial = get(split(&commentstring, ' \?%s'),0)
+  let commentEnd = get(split(&commentstring, ' \?%s'),1,'')
+  if ! IsCommented(commentInitial, commentEnd)
     execute "normal! mz"
-    execute "silent :s@^@".a:commentor." @"
+    execute "silent :s@.*@".commentInitial." &".commentEnd."@"
     normal! `z
   else
     execute "normal! mz"
-    execute "silent :s@^".a:commentor." \\?@@"
+    execute "silent :s@\\M".commentInitial." \\?@@ "." | silent :s@\\M".commentEnd."$@@"
     normal! `z
   endif
 endfunction
 
 augroup vimComment
   autocmd!
-  autocmd fileType * nnoremap <silent> gcc :call Comment("//", 2)<CR>
-  autocmd fileType * vnoremap <silent> gcc :call Comment("//", 2)<CR>
-  autocmd fileType vim nnoremap <silent> gcc :call Comment("\"", 1)<CR>
-  autocmd fileType vim vnoremap <silent> gcc :call Comment("\"", 1)<CR>
-  autocmd fileType zsh nnoremap <silent> gcc :call Comment("#", 1)<CR>
-  autocmd fileType zsh vnoremap <silent> gcc :call Comment("#", 1)<CR>
-  autocmd fileType sh nnoremap <silent> gcc :call Comment("#", 1)<CR>
-  autocmd fileType sh vnoremap <silent> gcc :call Comment("#", 1)<CR>
+  autocmd fileType * nnoremap <silent> gcc :call Comment()<CR>
+  autocmd fileType * vnoremap <silent> gcc :call Comment()<CR>
 augroup END
