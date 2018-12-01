@@ -29,6 +29,8 @@ set statusline+=\ %y
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 hi StatusLine ctermbg=white ctermfg=60
+hi LineNr ctermfg=250 ctermbg=236
+hi VertSplit ctermbg=white ctermfg=black
 
 " Maintain undo history between sessions
 set undodir=~/.my_vim_runtime/temp_dirs/undodir
