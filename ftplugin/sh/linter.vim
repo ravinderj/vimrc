@@ -7,7 +7,5 @@ if executable("shellcheck")
     autocmd QuickFixCmdPost [^l]* nested cwindow
     autocmd QuickFixCmdPost    l* nested lwindow
   augroup END
-  highlight QuickFixLine ctermbg = None
-  highlight QuickFixLine ctermfg = Red
 endif
 

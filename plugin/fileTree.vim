@@ -8,5 +8,7 @@ augroup ProjectDrawer
 "   open netrw file explorer when vim is opened with no argument
   autocmd!
   autocmd VimEnter * if argc() == 0 | :Vexplore | else | endif
+"   change root of netrw tree
+  autocmd filetype netrw map <silent> <S-k> :execute "Ntree ".expand("<cfile>")<CR>
 augroup END
 autocmd FileType netrw setl bufhidden=delete

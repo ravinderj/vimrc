@@ -28,3 +28,7 @@ augroup vimComment
   autocmd fileType * nnoremap <silent> gcc :call Comment()<CR>
   autocmd fileType * vnoremap <silent> gcc :call Comment()<CR>
 augroup END
+
+" TODO:
+" Comment should start with the first non-space character in line.
+" Either comment or uncomment at a time.
